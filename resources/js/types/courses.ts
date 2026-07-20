@@ -42,6 +42,7 @@ export type Lesson = {
     note?: Note;
     attachments?: Attachment[];
     code_snippets?: CodeSnippet[];
+    voice_recordings?: VoiceRecording[];
 };
 
 export type Note = {
@@ -83,4 +84,32 @@ export type CodeSnippet = {
     description: string | null;
     created_at: string;
     updated_at: string;
+};
+
+export type VoiceRecording = {
+    id: number;
+    lesson_id: number;
+    title: string;
+    path: string;
+    duration: number;
+    size: number;
+    description: string | null;
+    created_at: string;
+    updated_at: string;
+};
+
+export type Error = {
+    id: number;
+    user_id: number;
+    title: string;
+    error_message: string;
+    cause: string | null;
+    solution: string;
+    explanation: string | null;
+    error_code: string | null;
+    screenshot_path: string | null;
+    time_spent_minutes: number | null;
+    created_at: string;
+    updated_at: string;
+    tags?: Tag[];
 };

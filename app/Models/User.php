@@ -50,6 +50,22 @@ class User extends Authenticatable
     }
 
     /**
+     * @return HasMany<Error, $this>
+     */
+    public function errors(): HasMany
+    {
+        return $this->hasMany(Error::class);
+    }
+
+    /**
+     * @return HasMany<StudySession, $this>
+     */
+    public function studySessions(): HasMany
+    {
+        return $this->hasMany(StudySession::class);
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>

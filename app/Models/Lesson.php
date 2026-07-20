@@ -61,6 +61,14 @@ class Lesson extends Model
     }
 
     /**
+     * @return HasMany<VoiceRecording, $this>
+     */
+    public function voiceRecordings(): HasMany
+    {
+        return $this->hasMany(VoiceRecording::class);
+    }
+
+    /**
      * @return array<string, string>
      */
     protected function casts(): array

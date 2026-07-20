@@ -21,7 +21,7 @@ class LessonController extends Controller
 
     public function show(Lesson $lesson): Response
     {
-        $lesson->load(['module.course', 'note', 'codeSnippets', 'attachments']);
+        $lesson->load(['module.course', 'note', 'codeSnippets', 'attachments', 'voiceRecordings']);
 
         return Inertia::render('lessons/show', [
             'lesson' => $lesson,
