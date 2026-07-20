@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { AlertCircle, BookOpen, FolderGit2, LayoutGrid, Search, Tag } from 'lucide-react';
+import { AlertCircle, BookOpen, Calendar, FolderGit2, LayoutGrid, Search, Tag, Layers } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -26,6 +26,16 @@ const mainNavItems: NavItem[] = [
         title: 'Courses',
         href: '/courses',
         icon: BookOpen,
+    },
+    {
+        title: 'Flashcards',
+        href: '/flashcards',
+        icon: Layers,
+    },
+    {
+        title: 'Reviews',
+        href: '/reviews',
+        icon: Calendar,
     },
     {
         title: 'Errors',

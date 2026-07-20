@@ -1,5 +1,5 @@
 import { Head, Link, useForm } from '@inertiajs/react';
-import { ArrowLeft, Edit, Plus, Trash2 } from 'lucide-react';
+import { ArrowLeft, Download, Edit, Plus, Trash2 } from 'lucide-react';
 import AppLayout from '@/layouts/app-layout';
 import type { BreadcrumbItem, Course } from '@/types';
 
@@ -62,6 +62,22 @@ export default function CoursesShow({ course }: Props) {
                         </div>
                     </div>
                     <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2">
+                            <a
+                                href={`/export/${course.id}/markdown`}
+                                className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-3 py-1.5 text-sm hover:bg-accent"
+                            >
+                                <Download className="h-4 w-4" />
+                                MD
+                            </a>
+                            <a
+                                href={`/export/${course.id}/html`}
+                                className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-3 py-1.5 text-sm hover:bg-accent"
+                            >
+                                <Download className="h-4 w-4" />
+                                HTML
+                            </a>
+                        </div>
                         <Link
                             href={`/courses/${course.id}/edit`}
                             className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-3 py-1.5 text-sm hover:bg-accent"

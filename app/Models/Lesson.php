@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -66,6 +67,14 @@ class Lesson extends Model
     public function voiceRecordings(): HasMany
     {
         return $this->hasMany(VoiceRecording::class);
+    }
+
+    /**
+     * @return MorphMany<ReviewSchedule, $this>
+     */
+    public function reviewSchedules(): MorphMany
+    {
+        return $this->morphMany(ReviewSchedule::class, 'reviewable');
     }
 
     /**

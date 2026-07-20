@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import { AlertCircle, BookOpen, Clock, Code2, FileText, Folder, Mic, Tag, CheckCircle } from 'lucide-react';
+import { AlertCircle, BookOpen, Calendar, Clock, Code2, FileText, Folder, Layers, Mic, Tag, CheckCircle } from 'lucide-react';
 import AppLayout from '@/layouts/app-layout';
 import { dashboard } from '@/routes';
 import type { BreadcrumbItem, Course, Error } from '@/types';
@@ -23,6 +23,9 @@ type Stats = {
     total_tags: number;
     total_errors: number;
     total_study_time: number;
+    total_flashcard_decks: number;
+    total_flashcards: number;
+    due_reviews: number;
     average_progress: number;
 };
 
@@ -93,6 +96,24 @@ export default function Dashboard({ stats, recentCourses, recentErrors, recentSt
             value: stats.total_attachments,
             icon: FileText,
             color: 'text-teal-600',
+        },
+        {
+            title: 'Flashcard Decks',
+            value: stats.total_flashcard_decks,
+            icon: Layers,
+            color: 'text-violet-600',
+        },
+        {
+            title: 'Flashcards',
+            value: stats.total_flashcards,
+            icon: Layers,
+            color: 'text-fuchsia-600',
+        },
+        {
+            title: 'Due Reviews',
+            value: stats.due_reviews,
+            icon: Calendar,
+            color: 'text-rose-600',
         },
         {
             title: 'Errors Logged',

@@ -66,6 +66,22 @@ class User extends Authenticatable
     }
 
     /**
+     * @return HasMany<FlashcardDeck, $this>
+     */
+    public function flashcardDecks(): HasMany
+    {
+        return $this->hasMany(FlashcardDeck::class);
+    }
+
+    /**
+     * @return HasMany<ReviewSchedule, $this>
+     */
+    public function reviewSchedules(): HasMany
+    {
+        return $this->hasMany(ReviewSchedule::class);
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>

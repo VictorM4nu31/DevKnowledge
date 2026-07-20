@@ -1,13 +1,18 @@
 <?php
 
 use App\Http\Controllers\AttachmentController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CodeSnippetController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ErrorController;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\FlashcardController;
+use App\Http\Controllers\FlashcardDeckController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StudySessionController;
 use App\Http\Controllers\TagController;
@@ -44,6 +49,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('study-sessions', [StudySessionController::class, 'store'])->name('study-sessions.store');
     Route::delete('study-sessions/{studySession}', [StudySessionController::class, 'destroy'])->name('study-sessions.destroy');
+
+    Route::resource('flashcards', FlashcardDeckController::class)->parameters([
+        'flashcards' => 'deck',
+    ]);
+
+    Route::post('flashcards/{deck}/cards', [FlashcardController::class, 'store'])->name('flashcards.cards.store');
+    Route::put('flashcard/{flashcard}', [FlashcardController::class, 'update'])->name('flashcard.update');
+    Route::delete('flashcard/{flashcard}', [FlashcardController::class, 'destroy'])->name('flashcard.destroy');
+
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::post('/reviews/flashcard/{flashcard}', [ReviewController::class, 'reviewFlashcard'])->name('reviews.flashcard');
+    Route::post('/reviews/{review}/complete', [ReviewController::class, 'completeReview'])->name('reviews.complete');
+    Route::post('/reviews/schedule', [ReviewController::class, 'schedule'])->name('reviews.schedule');
+
+    Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
+
+    Route::get('/export/{course}/markdown', [ExportController::class, 'markdown'])->name('export.markdown');
+    Route::get('/export/{course}/html', [ExportController::class, 'html'])->name('export.html');
 
     Route::get('/search', [SearchController::class, 'index'])->name('search');
 });
